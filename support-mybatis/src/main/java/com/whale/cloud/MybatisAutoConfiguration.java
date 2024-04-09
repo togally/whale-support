@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * @author jiazhiwei
+ */
 @Configuration
 @MapperScan(value = {"com.whale.**.mapper"})
 @ConditionalOnProperty(prefix = "whale.mybatis", name = "enable", havingValue = "true", matchIfMissing = true)
