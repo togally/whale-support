@@ -1,0 +1,49 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    nacos:
+      server-addr: 117.72.14.134:8848
+      namespace: d25a4f89-4880-4e7d-a725-97b69c32db6e
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
+        file-extension: yaml
+        shared-configs:
+          - data-id: base.yaml
+            group: DEFAULT_GROUP
+
+mybatis-plus:
+  mapper-locations: /com/whale/**/mapper/*Dao.xml
+  typeAliasesPackage: com.whale.cloud.**.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+whale:
+  mybatis:
+    tenant:
+      enable: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
+    username: root
+    password: jiazhiwei123
+
+mini-db-router:
+  jdbc:
+    dbCount: 2
+    tbCount: 4
+    datasource:
+      db01:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
+        username: ${whale.datasource.username}
+        password: ${whale.datasource.password}
+      db02:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/support_test2?useUnicode=true
+        username: ${whale.datasource.username}
+        password: ${whale.datasource.password}

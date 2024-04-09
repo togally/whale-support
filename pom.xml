@@ -31,6 +31,7 @@
         <module>support-mybatis</module>
         <module>support-dubbo</module>
         <module>support-api</module>
+        <module>support-test</module>
     </modules>
 
     <dependencyManagement>
