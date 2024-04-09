@@ -1,2 +1,2 @@
 # whale-support
-project base scaffold
+基于springcloud、mybatis-plus、dubbo的脚手架项目
