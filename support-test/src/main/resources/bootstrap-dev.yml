@@ -4,7 +4,7 @@ server:
 spring:
   cloud:
     nacos:
-      server-addr: 117.72.14.134:8848
+      server-addr: 127.0.0.1:8848
       namespace: d25a4f89-4880-4e7d-a725-97b69c32db6e
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr}
@@ -30,7 +30,7 @@ whale:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
     username: root
-    password: jiazhiwei123
+    password: root
 
 mini-db-router:
   jdbc:
