@@ -1,4 +1,4 @@
-package com.whale.cloud.router.utils;
+package com.whale.cloud.utils;
 
 import com.whale.cloud.exception.InternalException;
 

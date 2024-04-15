@@ -1,4 +1,4 @@
-package com.whale.cloud.router.utils;
+package com.whale.cloud.utils;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
@@ -14,13 +14,13 @@ import java.util.Map;
 
 @Component
 public class CodeGenerateUtils {
-    @Value("${whale.datasource.url}")
+    @Value("${whale.mybatis.default.url}")
     private String url;
 
-    @Value("${whale.datasource.username}")
+    @Value("${whale.mybatis.default.username}")
     private String userName;
 
-    @Value("${whale.datasource.password}")
+    @Value("${whale.mybatis.default.password}")
     private String password;
 
     private String projectPath = "/Users/jiazhiwei/IdeaProjects/WhaleCloud/";

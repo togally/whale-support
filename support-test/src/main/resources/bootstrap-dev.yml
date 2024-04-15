@@ -27,23 +27,22 @@ whale:
   mybatis:
     tenant:
       enable: false
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
-    username: root
-    password: root
-
-mini-db-router:
-  jdbc:
-    dbCount: 2
-    tbCount: 4
-    datasource:
-      db01:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
-        username: ${whale.datasource.username}
-        password: ${whale.datasource.password}
-      db02:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/support_test2?useUnicode=true
-        username: ${whale.datasource.username}
-        password: ${whale.datasource.password}
+    default:
+      url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
+      username: root
+      password: jiazhiwei123
+  mini-db-router:
+    jdbc:
+      dbCount: 2
+      tbCount: 4
+      datasource:
+        db01:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
+          username: ${whale.mybatis.default.username}
+          password: ${whale.mybatis.default.password}
+        db02:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/support_test2?useUnicode=true
+          username: ${whale.datasource.username}
+          password: ${whale.datasource.password}

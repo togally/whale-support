@@ -7,9 +7,14 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 数据源配置
+ *
+ * @author jiazhiwei
+ */
 @Data
 @Component
-@ConfigurationProperties("mini-db-router.jdbc")
+@ConfigurationProperties("whale.mini-db-router.jdbc")
 public class RouterDataSourceConfig {
     /**
      * 数据库信息

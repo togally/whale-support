@@ -3,21 +3,20 @@ package com.whale.cloud.controller;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.whale.cloud.dto.PageParam;
 import com.whale.cloud.entity.BaseEntity;
-import com.whale.cloud.exception.InterfaceScope;
 import com.whale.cloud.facotry.ResultFactory;
 import com.whale.cloud.result.BaseResult;
 import com.whale.cloud.result.PageResult;
-import com.whale.cloud.router.strategy.InterfaceScopeStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.constraints.NotNull;
-import java.util.Arrays;
-import java.util.List;
 
+/**
+ * @author jiazhiwei
+ */
 @Validated
-public abstract class BaseController<T extends BaseEntity, S extends IService<T>> implements InterfaceScopeStrategy {
+public abstract class BaseController<T extends BaseEntity, S extends IService<T>>{
     @Autowired
     private S baseService;
 
@@ -95,10 +94,5 @@ public abstract class BaseController<T extends BaseEntity, S extends IService<T>
     @PostMapping("page")
     public PageResult<T> page(PageParam pageParam) {
         return ResultFactory.success(baseService.page(pageParam));
-    }
-
-    @Override
-    public List<InterfaceScope> enableScope(){
-        return Arrays.asList(InterfaceScope.CREATE,InterfaceScope.DELETE,InterfaceScope.UPDATE,InterfaceScope.QUERY);
     }
 }
