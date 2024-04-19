@@ -11,7 +11,7 @@ public class RouterTableNameHandler implements TableNameHandler {
     @Override
     public String dynamicTableName(String sql, String tableName) {
         if (StrUtil.isNotBlank(DbContextHolder.getTBKey())){
-            tableName = tableName + DbContextHolder.getTBKey();
+            tableName = tableName + "_" + DbContextHolder.getTBKey();
         }
         return tableName;
     }

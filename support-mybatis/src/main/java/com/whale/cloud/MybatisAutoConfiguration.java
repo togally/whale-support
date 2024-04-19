@@ -17,7 +17,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -87,5 +89,16 @@ public class MybatisAutoConfiguration {
             datasource.setTargetDataSources(targetDataSources);
         }
         return datasource;
+    }
+
+    @Bean
+    public TransactionTemplate transactionTemplate(DataSource dataSource){
+        DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+        dataSourceTransactionManager.setDataSource(dataSource);
+
+        TransactionTemplate transactionTemplate = new TransactionTemplate();
+        transactionTemplate.setTransactionManager(dataSourceTransactionManager);
+        transactionTemplate.setPropagationBehaviorName("PROPAGATION_REQUIRED");
+        return transactionTemplate;
     }
 }
