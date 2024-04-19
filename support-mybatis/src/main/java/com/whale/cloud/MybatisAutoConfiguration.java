@@ -3,12 +3,14 @@ package com.whale.cloud;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.DynamicTableNameInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import com.whale.cloud.handler.OperatorFillHandler;
 import com.whale.cloud.handler.TenantHandler;
 import com.whale.cloud.router.config.RouterDataSourceConfig;
 import com.whale.cloud.router.dynamic.DynamicRouterDatasource;
+import com.whale.cloud.handler.RouterTableNameHandler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -53,6 +55,7 @@ public class MybatisAutoConfiguration {
             interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(tenantHandler));
         }
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        interceptor.addInnerInterceptor(new DynamicTableNameInnerInterceptor(new RouterTableNameHandler()));
         return interceptor;
     }
 

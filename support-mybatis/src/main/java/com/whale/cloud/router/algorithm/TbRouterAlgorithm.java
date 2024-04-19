@@ -25,14 +25,16 @@ public class TbRouterAlgorithm implements AlgorithmExecutor<String, Integer> {
     @Override
     public Integer execute(String routerKey) {
         int tbCount = dataSourceConfig.getTbCount();
-        int dbCount = dataSourceConfig.getDbCount();
-        int size = dbCount * tbCount;
+        int size = tbCount;
+        if ((size & 1) != 1) {
+            size--;
+        }
         /**
          * 扰动函数
          * routerKey.hashCode() >>> 16 右移动16位后取的是高位的16位
          * 异或运算目的是让高位的16位与低位的16位都参与运算
          */
-        int idx = (size - 1) & (routerKey.hashCode() ^ (routerKey.hashCode() >>> 16));
-        return idx % tbCount + 1;
+        int idx = size & routerKey.hashCode() ^ (routerKey.hashCode() >>> 16);
+        return (idx % tbCount ) + 1;
     }
 }

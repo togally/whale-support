@@ -44,5 +44,5 @@ whale:
         db02:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/support_test2?useUnicode=true
-          username: ${whale.datasource.username}
-          password: ${whale.datasource.password}
+          username: ${whale.mybatis.default.username}
+          password: ${whale.mybatis.default.password}

@@ -1,13 +1,10 @@
 package com.whale.cloud.router.algorithm;
 
-import cn.hutool.core.map.MapUtil;
-import com.whale.cloud.exception.DbRouterNotConfigException;
 import com.whale.cloud.executor.AlgorithmExecutor;
 import com.whale.cloud.router.config.RouterDataSourceConfig;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.Map;
 
 /**
  * 数据库路由算法

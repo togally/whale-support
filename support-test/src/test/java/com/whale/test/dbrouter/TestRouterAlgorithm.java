@@ -25,17 +25,17 @@ public class TestRouterAlgorithm {
 
     @Test
     public void testTbExecutor(){
-        Map<Integer, Set<Integer>> routerMap = new HashMap<>();
-        for (int i = 1; i < 1000; i++) {
+        Map<Integer, Integer> routerMap = new HashMap<>();
+        for (int i = 1; i < 10000; i++) {
             String routerKey = RandomString.make(i);
-            int dbIndex = dbRouterAlgorithm.execute(routerKey);
             int tbIndex = tbRouterAlgorithm.execute(routerKey);
-            if (null == routerMap.get(dbIndex)){
-                routerMap.put(dbIndex,new HashSet<>());
+            if (null == routerMap.get(tbIndex)){
+                routerMap.put(tbIndex,1);
+            }else {
+               routerMap.put(tbIndex, routerMap.get(tbIndex) + 1);
             }
-            routerMap.get(dbIndex).add(tbIndex);
         }
-        log.info("路由结果", JSON.toJSONString(routerMap));
+        log.info("路由结果:{}", JSON.toJSONString(routerMap));
     }
 
     @Test
