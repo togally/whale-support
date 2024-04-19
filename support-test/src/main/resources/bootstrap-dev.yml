@@ -30,9 +30,10 @@ whale:
     default:
       url: jdbc:mysql://127.0.0.1:3306/support_test1?useUnicode=true
       username: root
-      password: jiazhiwei123
+      password: /
   mini-db-router:
     jdbc:
+      default: db01
       dbCount: 2
       tbCount: 4
       datasource:
